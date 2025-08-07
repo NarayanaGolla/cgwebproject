@@ -1,0 +1,8 @@
+# Use a base image with Java
+FROM openjdk:17-jdk-alpine
+
+# Add a label (optional)
+LABEL maintainer="yourname@example.com"
+
+COPY /webapp/build/libs/webapp.jar app.jar
+ENTRYPOINT ["java","-jar","/app.jar"] 

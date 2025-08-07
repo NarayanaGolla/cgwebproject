@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  webapp:
+    build: .
+    container_name: webapp-container
+    ports:
+      - "8080:8080"  # Map host port 8080 to container port 8080
+    environment:
+      - JAVA_OPTS=-Xmx512m  # Set Java options (e.g., max heap size)
+    volumes:
+       - /d/github/webapp:/app
+       - webapp-data:/app/data
+       - /d/dockerlogs/webapp:/app/logs
+    networks:
+      - webapp-network
+
+networks:
+  webapp-network:
+    driver: bridge
+
+# Define named volumes
+volumes:
+  webapp-data:
+    driver: local
+  webapp-logs:  # Named volume for logs
+    driver: local

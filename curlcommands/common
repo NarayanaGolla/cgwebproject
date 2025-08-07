@@ -1,0 +1,11 @@
+http://localhost:8080/
+
+curl -i http://localhost:8080/hello
+
+Request Param
+http://localhost:8080/greet?name=John
+
+
+curl -i -X POST http://localhost:8080/users \
+  -H "Content-Type: application/json" \
+  -d '{"name": "John"}'

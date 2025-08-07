@@ -1,0 +1,5 @@
+rootProject.name = 'cgwebproject'
+
+include 'common'
+include 'service'
+include 'webapp'
