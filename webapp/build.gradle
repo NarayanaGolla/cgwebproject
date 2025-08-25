@@ -1,14 +1,36 @@
 plugins {
-    id 'org.springframework.boot' version '3.5.3'
+    id 'org.springframework.boot' version '3.1.10'
     id 'io.spring.dependency-management' version '1.1.4'
 }
 
 dependencies {
+
     implementation project(':common')
     implementation project(':service')
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+
+    implementation('org.wiremock.integrations:wiremock-spring-boot:3.10.0')
+
+
+    // AssertJ
+    testImplementation "org.assertj:assertj-core:3.24.2"
+
+    // TestNG
+    testImplementation "org.testng:testng:7.11.0"
+
+    testImplementation("io.rest-assured:rest-assured:5.4.0")
+
+    // JUnit 5 + 4
+    testImplementation "org.junit.jupiter:junit-jupiter:5.10.2"
+    testImplementation "junit:junit:4.13.2"
+
+    // Mockito
+    testImplementation "org.mockito:mockito-core:5.11.0"
+
+
 }
+
 
 springBoot {
     mainClass = 'com.cog.webapp.SpringBootLauncer'
@@ -22,4 +44,19 @@ bootRun {
     jvmArgs = [
             "-javaagent:${project.rootDir}/newrelic/newrelic.jar"
     ]
+}
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+    testLogging {
+        events("passed", "skipped", "failed")
+    }
+
+    def suiteName = hasProperty("suitename") ? property("suitename") : "testng.xml"
+    def suiteFile = file("src/test/resources/${suiteName}")
+
+    useTestNG {
+        // suites suiteFile
+        suites 'src/test/resources/testng.xml'
+    }
 }

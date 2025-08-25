@@ -9,3 +9,7 @@ http://localhost:8080/greet?name=John
 curl -i -X POST http://localhost:8080/users \
   -H "Content-Type: application/json" \
   -d '{"name": "John"}'
+
+ curl -X POST http://localhost:8080/register
+ -H "Content-Type: application/json"
+ -d '{"username":"test","password":"pass"}'
