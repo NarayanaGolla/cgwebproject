@@ -3,14 +3,13 @@ plugins {
 }
 dependencies {
     api('org.springframework:spring-context')
-    testImplementation('org.testng:testng:7.11.0')
-    testImplementation('io.rest-assured:rest-assured:5.4.0')
-    testImplementation('org.hamcrest:hamcrest:2.2')
-    testImplementation('org.junit.jupiter:junit-jupiter:5.10.2')
 
-    testImplementation "org.wiremock:wiremock-jetty12:3.12.1"
+    // MySQL Driver
+    runtimeOnly 'com.mysql:mysql-connector-j'
+
+    // Oracle Driver (Use correct version based on your Oracle DB)
+    runtimeOnly 'com.oracle.database.jdbc:ojdbc8:19.3.0.0'
 }
-
 
 tasks.withType(Test).configureEach {
     useJUnitPlatform()
