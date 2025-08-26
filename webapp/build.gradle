@@ -10,7 +10,12 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 
-    implementation('org.wiremock.integrations:wiremock-spring-boot:3.10.0')
+    implementation('org.wiremock.integrations:wiremock-spring-boot:3.10.6')
+
+
+    implementation(platform('org.springframework.boot:spring-boot-dependencies:3.5.4'))
+    implementation 'org.apache.httpcomponents.client5:httpclient5'
+
 
 
     // AssertJ
@@ -22,11 +27,17 @@ dependencies {
     testImplementation("io.rest-assured:rest-assured:5.4.0")
 
     // JUnit 5 + 4
-    testImplementation "org.junit.jupiter:junit-jupiter:5.10.2"
+  //  testImplementation "org.junit.jupiter:junit-jupiter:5.10.2"
     testImplementation "junit:junit:4.13.2"
 
     // Mockito
     testImplementation "org.mockito:mockito-core:5.11.0"
+
+
+    //Cucumber
+    testImplementation("io.cucumber:cucumber-java:7.27.2")
+    testImplementation("io.cucumber:cucumber-junit:7.27.2")
+  //  implementation("io.cucumber:cucumber-junit-platform-engine:7.27.2")
 
 
 }
@@ -47,7 +58,7 @@ bootRun {
 }
 
 tasks.withType(Test).configureEach {
-    useJUnitPlatform()
+    //useJUnitPlatform()
     testLogging {
         events("passed", "skipped", "failed")
     }
@@ -55,8 +66,8 @@ tasks.withType(Test).configureEach {
     def suiteName = hasProperty("suitename") ? property("suitename") : "testng.xml"
     def suiteFile = file("src/test/resources/${suiteName}")
 
-    useTestNG {
-        // suites suiteFile
+   useTestNG {
+        suites suiteFile
         suites 'src/test/resources/testng.xml'
-    }
+   }
 }
