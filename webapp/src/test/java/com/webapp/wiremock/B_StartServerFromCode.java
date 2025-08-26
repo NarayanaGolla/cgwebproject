@@ -1,7 +1,6 @@
 package com.webapp.wiremock;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
-import com.github.tomakehurst.wiremock.client.WireMock;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -17,9 +16,9 @@ public class B_StartServerFromCode {
   public void initializeWireMock() {
     System.out.println("in beforeClass");
 
-    server = new WireMockServer(PORT);
-    server.start();
-    WireMock.configureFor(HOST, PORT);
+    //    server = new WireMockServer(PORT);
+    //    server.start();
+    //    WireMock.configureFor(HOST, PORT);
 
     //    ResponseDefinitionBuilder mockResponse = new ResponseDefinitionBuilder();
     //    mockResponse.withStatus(201);
@@ -36,9 +35,9 @@ public class B_StartServerFromCode {
   // test case 1
   @Test
   public void closeServer() {
-    if (server.isRunning() && null != server) {
-      server.shutdown();
-    }
+    //    if (server.isRunning() && null != server) {
+    //      server.shutdown();
+    //    }
   }
 
   @AfterClass
