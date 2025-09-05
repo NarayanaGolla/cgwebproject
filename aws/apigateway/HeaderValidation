@@ -1,0 +1,95 @@
+Request Integration:
+Never
+Content-Type:application/json
+
+
+{
+"test":"invoked"
+}
+
+{
+    "status":"contractors"
+}
+
+Validate request body:
+=======================
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "UserRequest",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string", "minLength": 1 },
+    "email": { "type": "string", "format": "email" },
+    "age": { "type": "integer", "minimum": 18 }
+  },
+  "required": ["name", "email", "age"]
+}
+
+
+import json
+
+def lambda_handler(event, context):
+    body = json.loads(event["body"])
+
+    if "name" not in body or not body["name"]:
+        return {"statusCode": 400, "body": "Name is required"}
+    if "age" in body and body["age"] < 18:
+        return {"statusCode": 400, "body": "Age must be >= 18"}
+
+    return {"statusCode": 200, "body": "Valid request"}
+
+
+    {
+        "status":"contractors"
+    }
+
+
+
+    {
+
+    "contractors": [
+    "On site":70,
+    "Total contractors": 200
+    ],
+    "permanent": [
+        "On site":350,
+        "Total employees": 1000
+    ]
+    }
+
+    ---
+
+    {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "title": "Employee Status",
+      "type": "object",
+      "properties": {
+        "status": { "type": "string", "enum": ["contractors","permanent"] }
+      }
+    }
+
+
+
+import json
+
+def lambda_handler(event, context):
+
+   print(event)
+   response =   {
+
+            "contractors": [
+            "On site":70,
+            "Total contractors": 200
+            ],
+            "permanent": [
+                "On site":350,
+                "Total employees": 1000
+            ]
+    }
+
+    return {
+        'statusCode': 200,
+        'body': response[event["status"]]
+    }
+Create Model
+

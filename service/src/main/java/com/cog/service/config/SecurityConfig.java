@@ -39,6 +39,8 @@ public class SecurityConfig {
             auth ->
                 auth.requestMatchers("/register", "/login")
                     .permitAll() // Public endpoint
+                    .requestMatchers("/kafka/**")
+                    .authenticated()
                     .anyRequest()
                     .authenticated() // All others require authentication
             )

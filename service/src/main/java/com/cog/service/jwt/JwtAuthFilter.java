@@ -4,7 +4,6 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,8 +16,8 @@ import org.springframework.web.filter.OncePerRequestFilter;
 @Component
 public class JwtAuthFilter extends OncePerRequestFilter {
 
-  CustomUserDetailsService userDetailsServiceImpl;
-  JwtService jwtService;
+  private final CustomUserDetailsService userDetailsServiceImpl;
+  private final JwtService jwtService;
 
   @Autowired
   public JwtAuthFilter(CustomUserDetailsService userDetailsServiceImpl, JwtService jwtService) {
@@ -35,16 +34,11 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     String token = null;
     String username = null;
 
-    // Add the Authorization header if it's not already present
-    if (authHeader == null) {
-      // Retrieve the token from the session
-      HttpSession session =
-          request.getSession(false); // false: Do not create a new session if it doesn't exist
-      if (session != null && session.getAttribute("token") != null) {
-        // Example JWT token (replace with actual token logic)
-        String jwtToken = "Bearer " + session.getAttribute("token");
-        response.addHeader("Authorization", jwtToken);
-      }
+    // ✅ Skip JWT check for public endpoints
+    String path = request.getRequestURI();
+    if (path.equals("/register") || path.equals("/login")) {
+      filterChain.doFilter(request, response);
+      return;
     }
 
     if (authHeader != null && authHeader.startsWith("Bearer ")) {
@@ -52,21 +46,20 @@ public class JwtAuthFilter extends OncePerRequestFilter {
       username = jwtService.extractUsername(token);
     }
 
-    if (request.getRequestURI().equals("/register")) {
-      filterChain.doFilter(request, response);
-      return;
-    }
-
     if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
       UserDetails userDetails = userDetailsServiceImpl.loadUserByUsername(username);
+
       if (jwtService.validateToken(token, userDetails)) {
         UsernamePasswordAuthenticationToken authenticationToken =
             new UsernamePasswordAuthenticationToken(
                 userDetails, null, userDetails.getAuthorities());
         authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+
+        // ✅ Tell Spring Security the request is authenticated
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
       }
     }
+
     filterChain.doFilter(request, response);
   }
 }

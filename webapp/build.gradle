@@ -10,14 +10,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 
-    implementation('org.wiremock.integrations:wiremock-spring-boot:3.10.6')
-
-
-    implementation(platform('org.springframework.boot:spring-boot-dependencies:3.5.4'))
-    implementation 'org.apache.httpcomponents.client5:httpclient5'
-
-
-
     // AssertJ
     testImplementation "org.assertj:assertj-core:3.24.2"
 
