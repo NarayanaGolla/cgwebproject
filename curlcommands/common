@@ -13,3 +13,16 @@ curl -i -X POST http://localhost:8080/users \
  curl -X POST http://localhost:8080/register
  -H "Content-Type: application/json"
  -d '{"username":"test","password":"pass"}'
+
+
+curl -X POST "http://localhost:8080/kafka/send" \
+     -H "Authorization: Bearer <your-jwt-token>" \
+     -H "Content-Type: application/json" \
+     -d '{"id":1,"name":"Narayana"}'
+
+
+ curl -X POST "http://localhost:8080/kafka/publish?message=HelloWorld" \
+      -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJuYXJheWFuYSIsImlhdCI6MTc1Njg4NjM1OSwiZXhwIjoxNzU2ODg5OTU5fQ.oHHY9gXjBxAEpGh95LJkBFjixJs6DebqDaPhCx_P5Tg"
+
+
+http://localhost:8080/kafka/publish?message=Hello
