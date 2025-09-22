@@ -1,10 +1,10 @@
 package com.cog.service;
 
-import com.cog.service.bean.RegisterBean;
-import com.cog.service.dom.Login;
-import com.cog.service.dom.User;
-import com.cog.service.repository.LoginRepository;
-import com.cog.service.repository.UserRepository;
+import com.cog.bean.RegisterBean;
+import com.cog.dom.Login;
+import com.cog.dom.User;
+import com.cog.repository.LoginRepository;
+import com.cog.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -32,10 +32,12 @@ public class UserService {
     loginRepository.save(login);
   }
 
-  public void registerUser(RegisterBean registerBean) {
+  public User registerUser(RegisterBean registerBean) {
     User register = new User();
     register.setUsername(registerBean.getUsername());
     register.setPassword(passwordEncoder.encode(registerBean.getPassword()));
     userRepository.save(register);
+
+    return register;
   }
 }

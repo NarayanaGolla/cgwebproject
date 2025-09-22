@@ -4,7 +4,7 @@
 <suite name = "trainingSuite">
     <test name = "trainingtest" >
         <classes>
-            <class name="com.webapp.wiremock.B_StartServerFromCode"/>
+            <class name="com.webapp.selenium.LoginTest"/>
         </classes>
     </test>
 
