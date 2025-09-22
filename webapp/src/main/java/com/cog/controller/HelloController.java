@@ -1,10 +1,11 @@
 package com.cog.controller;
 
+import com.cog.bean.RegisterBean;
+import com.cog.dom.User;
+import com.cog.jwt.AuthRequestDTO;
+import com.cog.jwt.JwtResponseDTO;
+import com.cog.jwt.JwtService;
 import com.cog.service.UserService;
-import com.cog.service.bean.RegisterBean;
-import com.cog.service.jwt.AuthRequestDTO;
-import com.cog.service.jwt.JwtResponseDTO;
-import com.cog.service.jwt.JwtService;
 import jakarta.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +15,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,10 +41,10 @@ public class HelloController {
     this.jwtService = jwtService;
   }
 
-  @GetMapping("/")
-  public String home() {
-    return "Hello, World!";
-  }
+  //  @GetMapping("/")
+  //  public String home() {
+  //    return "Hello, World!";
+  //  }
 
   @GetMapping("/greet")
   public String greet(@RequestParam String name) {
@@ -50,10 +52,14 @@ public class HelloController {
   }
 
   @PostMapping(value = "/register", consumes = "application/json")
-  public ResponseEntity<RegisterBean> userRegister(
-      @Validated @RequestBody RegisterBean registerBean) {
-    userService.registerUser(registerBean);
-    return new ResponseEntity<>(registerBean, HttpStatus.CREATED);
+  public ResponseEntity<?> userRegister(
+      @Validated @RequestBody RegisterBean registerBean, BindingResult result) {
+
+    if (result.hasErrors()) {
+      return ResponseEntity.badRequest().body(result.getAllErrors().get(0).getDefaultMessage());
+    }
+    User registeredUser = userService.registerUser(registerBean);
+    return ResponseEntity.ok(registeredUser);
   }
 
   @PostMapping(value = "/login", consumes = "application/json")

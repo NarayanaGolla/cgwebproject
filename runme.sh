@@ -1,0 +1,1 @@
+nohup  gradle runSimple --info --stacktrace &

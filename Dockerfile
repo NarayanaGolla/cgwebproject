@@ -1,16 +1,27 @@
-# Use a base image with Java
+# Use a base image with Java 17
 FROM openjdk:17-jdk-alpine
 
-# Add a label (optional)
+# Add metadata
 LABEL maintainer="yourname@example.com"
 
-ENV JAVA_OPTS="-Djava.util.logging.config.file=/app/logging.properties"
+# Set working directory inside container
+WORKDIR /app
 
+# Accept JAR file as build argument
+ARG JAR_FILE=webapp/build/libs/webapp-1.0.0.jar
 
-ARG JAR_FILE=webapp/build/libs/webapp.jar
-
-# Copy JAR file
+# Copy JAR file to container
 COPY ${JAR_FILE} app.jar
 
+# Optional: copy logging properties if you have it
+# COPY logging.properties /app/logging.properties
+
+# Expose ports (Spring Boot default is 8080)
+EXPOSE 8080
+
+# JVM options (optional)
+# ENV JAVA_OPTS="-Djava.util.logging.config.file=/app/logging.properties"
+
 # Run the JAR
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar"]
+#ENTRYPOINT ["java", "-jar", "app.jar"]

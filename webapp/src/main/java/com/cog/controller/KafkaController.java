@@ -1,8 +1,8 @@
 package com.cog.controller;
 
-import com.cog.service.bean.User;
-import com.cog.service.producer.JsonKafkaProducer;
-import com.cog.service.producer.KafkaProducer;
+import com.cog.bean.User;
+import com.cog.producer.JsonKafkaProducer;
+import com.cog.producer.KafkaProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
