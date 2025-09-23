@@ -48,9 +48,22 @@ dependencies {
 }
 
 
-springBoot {
-    mainClass = 'com.cog.webapp.SpringBootLauncer'
+tasks.register('runSimple', JavaExec) {
+    group = "application"
+    description = "Run the Spring Boot application in a simple way"
+
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = "com.cog.webapp.SpringBootLauncer"  // replace with your @SpringBootApplication class
+
+    // Pass arguments if needed
+    // args = ["--spring.profiles.active=dev"]
 }
+
+
+
+//springBoot {
+//    mainClass = 'com.cog.webapp.SpringBootLauncer'
+//}
 
 //bootJar {
 //    archiveFileName = 'webapp.jar'

@@ -73,7 +73,6 @@ subprojects {
         finalizedBy jacocoTestReport
     }
 
-
     jacocoTestReport {
         dependsOn test
         reports {
@@ -82,15 +81,6 @@ subprojects {
         }
     }
 }
-
-sonar {
-    properties {
-        property "sonar.projectKey", "my-springboot-app"
-        property "sonar.host.url", "http://localhost:9000"
-        property "sonar.login", "squ_6074b0342ac8d552745edf55c61ee6526d89e6e4"
-    }
-}
-
 
 sonar {
     properties {
