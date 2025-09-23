@@ -26,13 +26,13 @@ pipeline {
 
         stage('Test') {
             steps {
-                bat  './gradlew test'
+                bat  './gradlew test --info --stacktrace'
             }
-            post {
-                always {
-                    junit '**/build/test-results/test/*.xml'
-                }
-            }
+//             post {
+//                 always {
+//                     junit '**/build/test-results/test/*.xml'
+//                 }
+//             }
         }
 
         stage('Package') {
