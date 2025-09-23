@@ -21,12 +21,12 @@ pipeline {
 
         stage('Build') {
             steps {
-                 // If gradlew exists, use it. Otherwise fallback to system gradle
-                                    if (fileExists('gradlew')) {
-                                        sh './gradlew clean build --info --stacktrace'
-                                    } else {
-                                        sh 'gradle clean build --info --stacktrace'
-                                    }
+                // Run Gradle build
+                if (fileExists('gradlew')) {
+                 sh './gradlew clean build --info --stacktrace'
+                }else {
+                   sh 'gradle clean build'
+                }
             }
         }
 
