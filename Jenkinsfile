@@ -1,14 +1,13 @@
 pipeline {
-    agent any   // run on any available Jenkins agent
+    agent any
 
     options {
-        skipDefaultCheckout(true)  // optional: skip automatic checkout
-        timestamps()               // show timestamps in logs
+        skipDefaultCheckout(true)
+        timestamps()
     }
 
-    environment {
-        JAVA_HOME = tool name: 'JAVA_HOME', type: 'jdk'   // use your JDK installation name
-        PATH = "${JAVA_HOME}/bin:${env.PATH}"
+    tools {
+        jdk 'JAVA_HOME'   // must match Global Tool Configuration name
     }
 
     stages {
@@ -21,12 +20,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                // Run Gradle build
-                if (fileExists('gradlew')) {
-                 sh './gradlew clean build --info --stacktrace'
-                }else {
-                   sh 'gradle clean build'
-                }
+                sh './gradlew clean build --info --stacktrace'
             }
         }
 
@@ -36,7 +30,7 @@ pipeline {
             }
             post {
                 always {
-                    junit '**/build/test-results/test/*.xml' // publish test results
+                    junit '**/build/test-results/test/*.xml'
                 }
             }
         }
@@ -49,11 +43,11 @@ pipeline {
 
         stage('Deploy') {
             when {
-                branch 'main'   // deploy only when building main branch
+                branch 'main'   // change to 'feature/java8features' if you want to deploy that branch
             }
             steps {
                 echo 'Deploying application...'
-                // Example: copy to server, run Docker, etc.
+                // Example: scp to server, docker build/push, helm upgrade, etc.
             }
         }
     }
