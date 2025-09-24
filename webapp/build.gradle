@@ -1,6 +1,12 @@
 plugins {
-    id 'org.springframework.boot' version '3.1.10'
-    id 'io.spring.dependency-management' version '1.1.4'
+    id 'org.springframework.boot' version '3.5.6'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
 }
 
 dependencies {
@@ -22,35 +28,50 @@ dependencies {
     testImplementation("io.rest-assured:rest-assured:5.4.0")
 
     //selenium
-  //  implementation "org.seleniumhq.selenium:selenium-java:4.35.0"
- //   implementation "io.github.bonigarcia:webdrivermanager:6.3.2"
+    implementation("org.seleniumhq.selenium:selenium-java:4.35.0") {
+        exclude group: "org.apache.httpcomponents.core5", module: "httpcore5"
+        exclude group: "org.apache.httpcomponents.core5", module: "httpcore5-h2"
+        // also if needed exclude client5 etc.
+    }
+     implementation "io.github.bonigarcia:webdrivermanager:6.3.2"
 
-// HttpClient 5.3.x is required for TlsSocketStrategy
-   // implementation "org.apache.httpcomponents.client5:httpclient5:5.3.1"
-   // implementation "org.apache.httpcomponents.core5:httpcore5:5.3.1"
+    // HttpClient 5.3.x is required for TlsSocketStrategy
+    implementation "org.apache.httpcomponents.client5:httpclient5:5.4.4"
+    implementation "org.apache.httpcomponents.core5:httpcore5:5.3.6"    // or other latest 5.3.x
 
 
     // JUnit 5 + 4
-  //  testImplementation "org.junit.jupiter:junit-jupiter:5.10.2"
+    // testImplementation "org.junit.jupiter:junit-jupiter:5.10.2"
     testImplementation "junit:junit:4.13.2"
 
     // Mockito
     testImplementation "org.mockito:mockito-core:5.11.0"
 
-
-
     //Cucumber
     testImplementation("io.cucumber:cucumber-java:7.27.2")
     testImplementation("io.cucumber:cucumber-junit:7.27.2")
-  //  implementation("io.cucumber:cucumber-junit-platform-engine:7.27.2")
 
-
+   implementation("org.wiremock.integrations:wiremock-spring-boot:3.10.6")
 }
 
 
-springBoot {
-    mainClass = 'com.cog.webapp.SpringBootLauncer'
+
+tasks.register('runSimple', JavaExec) {
+    group = "application"
+    description = "Run the Spring Boot application in a simple way"
+
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = "com.cog.webapp.SpringBootLauncer"  // replace with your @SpringBootApplication class
+
+    // Pass arguments if needed
+    // args = ["--spring.profiles.active=dev"]
 }
+
+
+
+//springBoot {
+//    mainClass = 'com.cog.webapp.SpringBootLauncer'
+//}
 
 //bootJar {
 //    archiveFileName = 'webapp.jar'

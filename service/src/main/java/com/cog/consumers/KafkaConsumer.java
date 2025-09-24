@@ -53,7 +53,7 @@ public class KafkaConsumer {
     ObjectMapper mapper = new ObjectMapper();
     String jsonString = mapper.writeValueAsString(traineeBean);
 
-    System.out.println("✅ JSON: " + jsonString);
+    System.out.println("JSON: " + jsonString);
 
     traineeBean.setId(id);
     traineeBean.setName(name);

@@ -1,1 +1,1 @@
-nohup  gradle runSimple --info --stacktrace &
+nohup  gradle :webapp:runSimple --info --stacktrace &
