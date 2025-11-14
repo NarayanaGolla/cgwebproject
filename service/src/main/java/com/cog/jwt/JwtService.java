@@ -3,21 +3,15 @@ package com.cog.jwt;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.io.Decoders;
-import io.jsonwebtoken.security.Keys;
-import java.security.Key;
+import java.security.PrivateKey;
+import java.security.PublicKey;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.function.Function;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 @Component
 public class JwtService {
-
-  public static final String SECRET =
-      "357638792F423F4428472B4B6250655368566D597133743677397A2443264629";
 
   public String extractUsername(String token) {
     return extractClaim(token, Claims::getSubject);
@@ -33,12 +27,12 @@ public class JwtService {
   }
 
   private Claims extractAllClaims(String token) {
-    return Jwts.parserBuilder()
-        .setSigningKey(getSignKey())
-        .setAllowedClockSkewSeconds(60) // Allow 60s clock skew
-        .build()
-        .parseClaimsJws(token)
-        .getBody();
+    try {
+      PublicKey publicKey = KeyLoader.getPublicKey();
+      return Jwts.parserBuilder().setSigningKey(publicKey).build().parseClaimsJws(token).getBody();
+    } catch (Exception e) {
+      throw new RuntimeException("Invalid or expired JWT token", e);
+    }
   }
 
   private Boolean isTokenExpired(String token) {
@@ -50,24 +44,15 @@ public class JwtService {
     return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
   }
 
-  public String generateToken(String username) { // Fixed method name
-    Map<String, Object> claims = new HashMap<>();
-    return createToken(claims, username);
-  }
+  public String generateToken(String username) throws Exception {
+    PrivateKey privateKey = KeyLoader.getPrivateKey();
 
-  private String createToken(Map<String, Object> claims, String username) {
     return Jwts.builder()
-        .setClaims(claims)
         .setSubject(username)
-        .setIssuedAt(new Date(System.currentTimeMillis()))
-        .setExpiration(
-            new Date(System.currentTimeMillis() + 1000 * 60 * 60)) // Extended expiry to 1 hour
-        .signWith(getSignKey(), SignatureAlgorithm.HS256)
+        .setIssuer("myapp")
+        .setIssuedAt(new Date())
+        .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60))
+        .signWith(privateKey, SignatureAlgorithm.RS256)
         .compact();
-  }
-
-  private Key getSignKey() {
-    byte[] keyBytes = Decoders.BASE64.decode(SECRET);
-    return Keys.hmacShaKeyFor(keyBytes);
   }
 }

@@ -1,0 +1,9 @@
+{
+  "status": "success",
+  "message": "User registered successfully",
+  "user": {
+    "id": 101,
+    "name": "Narayana",
+    "role": "Manager"
+  }
+}

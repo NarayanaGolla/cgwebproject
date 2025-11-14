@@ -5,6 +5,7 @@ import com.cog.jwt.JwtAuthFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -36,11 +37,14 @@ public class SecurityConfig {
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-    http.csrf(csrf -> csrf.disable()) // Disable CSRF for testing (optional, enable in prod)
+    http.csrf(csrf -> csrf.disable())
+        .cors(cors -> {}) // ✅ Enable CORS// Disable CSRF for testing (optional, enable in prod)
         .authorizeHttpRequests(
             auth ->
                 auth.requestMatchers("/", "/index", "/register", "/login")
                     .permitAll()
+                    .requestMatchers(HttpMethod.OPTIONS, "/**")
+                    .permitAll() // ✅ Allow preflight
                     .requestMatchers(
                         "/",
                         "/home",
@@ -51,6 +55,12 @@ public class SecurityConfig {
                         "/images/**",
                         "/webjars/**")
                     .permitAll() // Public endpoint
+                    .requestMatchers("/actuator/**") // ✅ Allow actuator endpoints
+                    .permitAll()
+
+                    //  Swagger endpoints (important)
+                    .requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**")
+                    .permitAll()
                     .requestMatchers("/kafka/**")
                     .authenticated()
                     .anyRequest()

@@ -1,5 +1,6 @@
 package com.cog.controller;
 
+import com.cog.bean.CourseBean;
 import com.cog.bean.User;
 import com.cog.producer.JsonKafkaProducer;
 import com.cog.producer.KafkaProducer;
@@ -29,5 +30,14 @@ public class KafkaController {
     producer.sendCsvToKafka("data.csv");
 
     return ResponseEntity.ok("User sent!");
+  }
+
+  @PostMapping("/sendcourses")
+  public ResponseEntity<String> sendCourses(@RequestBody CourseBean coursebean) {
+
+    // Provide CSV file path
+    producer.sendCsvToKafka("course.csv");
+
+    return ResponseEntity.ok("Course sent!");
   }
 }

@@ -531,3 +531,101 @@
 2025-08-30T09:24:10,751+0530 [32288 48] com.newrelic INFO: Real user monitoring is enabled for application MyMultiModuleApp. Auto instrumentation is enabled.
 2025-08-30T09:24:10,751+0530 [32288 48] com.newrelic INFO: New Relic JFR Monitor is disabled: JFR config has not been enabled in the Java agent.
 2025-08-30T09:28:12,351+0530 [32288 24] com.newrelic.agent.core.CoreServiceImpl INFO: JVM is shutting down
+2025-10-07T10:40:44,916+0530 [29760 1] com.newrelic INFO: Writing to New Relic log file: D:\github\cgwebproject\newrelic\logs\newrelic_agent.log
+2025-10-07T10:40:44,916+0530 [29760 1] com.newrelic INFO: JRE vendor Oracle Corporation version 21.0.8
+2025-10-07T10:40:44,916+0530 [29760 1] com.newrelic INFO: JVM vendor Oracle Corporation Java HotSpot(TM) 64-Bit Server VM version 21.0.8+12-LTS-250
+2025-10-07T10:40:44,916+0530 [29760 1] com.newrelic INFO: OS Windows 11 version 10.0 arch amd64
+2025-10-07T10:40:44,916+0530 [29760 1] com.newrelic INFO: Agent Host: LAPTOP-IOMOJL85 IP: 172.24.48.1
+2025-10-07T10:40:44,916+0530 [29760 1] com.newrelic INFO: New Relic Agent v8.22.0 is initializing...
+2025-10-07T10:40:46,295+0530 [29760 49] com.newrelic INFO: Instrumentation com.newrelic.instrumentation.jdbc-resultset is disabled. Skipping.
+2025-10-07T10:40:48,013+0530 [29760 1] com.newrelic.agent.RPMServiceManagerImpl INFO: Configured to connect to New Relic at collector.newrelic.com:443
+2025-10-07T10:40:48,727+0530 [29760 1] com.newrelic INFO: Setting audit_mode to false
+2025-10-07T10:40:48,888+0530 [29760 64] com.newrelic WARN: Failed to validate Azure App Services value
+2025-10-07T10:40:48,951+0530 [29760 1] com.newrelic.agent.config.ConfigServiceImpl INFO: Configuration file is D:\github\cgwebproject\newrelic\newrelic.yml
+2025-10-07T10:40:48,968+0530 [29760 1] com.newrelic INFO: New Relic Agent v8.22.0 has started
+2025-10-07T10:40:48,968+0530 [29760 1] com.newrelic INFO: Agent class loader: com.newrelic.bootstrap.BootstrapAgent$JVMAgentClassLoader@3b22cdd0
+2025-10-07T10:40:48,968+0530 [29760 1] com.newrelic INFO: Premain startup complete in 5,939ms
+2025-10-07T10:40:48,968+0530 [29760 1] com.newrelic INFO: New Relic Security is completely disabled by one of the user provided config `security.enabled`, `security.agent.enabled` or `high_security`. Not loading security capabilities.
+2025-10-07T10:40:57,567+0530 [29760 1] com.newrelic INFO: Server Info: Apache Tomcat/10.1.46
+2025-10-07T10:41:09,005+0530 [29760 68] com.newrelic INFO: Host name is LAPTOP-IOMOJL85, display host LAPTOP-IOMOJL85 for application MyMultiModuleApp
+2025-10-07T10:41:09,005+0530 [29760 68] com.newrelic INFO: New Relic JFR Monitor is disabled: JFR config has not been enabled in the Java agent.
+2025-10-07T10:41:10,986+0530 [29760 68] com.newrelic INFO: Collector redirection to collector.newrelic.com:443
+2025-10-07T10:41:12,702+0530 [29760 68] com.newrelic INFO: Max payload size is 1,000,000 bytes
+2025-10-07T10:41:12,702+0530 [29760 68] com.newrelic INFO: Agent run id: BdLekHzKgcKlAGoBDFGMkzRo5KFcAAIBAAAnIQEAAHRAAgRT1lBcAwAGOC4yMi4wAA9MQVBUT1AtSU9NT0pMODUAEE15TXVsdGlNb2R1bGVBcHA
+2025-10-07T10:41:12,702+0530 [29760 68] com.newrelic INFO: Agent 29760@LAPTOP-IOMOJL85/MyMultiModuleApp connected to collector.newrelic.com:443
+2025-10-07T10:41:12,702+0530 [29760 68] com.newrelic INFO: Reporting to: https://rpm.newrelic.com/accounts/6947084/applications/1406554204
+2025-10-07T10:41:12,702+0530 [29760 68] com.newrelic INFO: Using default collector host: collector.newrelic.com
+2025-10-07T10:41:12,702+0530 [29760 68] com.newrelic INFO: Using default metric ingest URI: https://metric-api.newrelic.com/metric/v1
+2025-10-07T10:41:12,702+0530 [29760 68] com.newrelic INFO: Using default event ingest URI: https://insights-collector.newrelic.com/v1/accounts/events
+2025-10-07T10:41:12,702+0530 [29760 68] com.newrelic INFO: Using default collector host: collector.newrelic.com
+2025-10-07T10:41:12,702+0530 [29760 68] com.newrelic INFO: Using default metric ingest URI: https://metric-api.newrelic.com/metric/v1
+2025-10-07T10:41:12,702+0530 [29760 68] com.newrelic INFO: Using default event ingest URI: https://insights-collector.newrelic.com/v1/accounts/events
+2025-10-07T10:41:13,840+0530 [29760 68] com.newrelic INFO: Real user monitoring is enabled for application MyMultiModuleApp. Auto instrumentation is enabled.
+2025-10-07T10:41:13,840+0530 [29760 68] com.newrelic INFO: New Relic JFR Monitor is disabled: JFR config has not been enabled in the Java agent.
+2025-10-07T10:41:20,888+0530 [29760 38] com.newrelic.agent.core.CoreServiceImpl INFO: JVM is shutting down
+2025-10-07T10:44:40,606+0530 [28264 1] com.newrelic INFO: Writing to New Relic log file: D:\github\cgwebproject\newrelic\logs\newrelic_agent.log
+2025-10-07T10:44:40,606+0530 [28264 1] com.newrelic INFO: JRE vendor Oracle Corporation version 21.0.8
+2025-10-07T10:44:40,607+0530 [28264 1] com.newrelic INFO: JVM vendor Oracle Corporation Java HotSpot(TM) 64-Bit Server VM version 21.0.8+12-LTS-250
+2025-10-07T10:44:40,607+0530 [28264 1] com.newrelic INFO: OS Windows 11 version 10.0 arch amd64
+2025-10-07T10:44:40,607+0530 [28264 1] com.newrelic INFO: Agent Host: LAPTOP-IOMOJL85 IP: 172.24.48.1
+2025-10-07T10:44:40,607+0530 [28264 1] com.newrelic INFO: New Relic Agent v8.22.0 is initializing...
+2025-10-07T10:44:41,280+0530 [28264 49] com.newrelic INFO: Instrumentation com.newrelic.instrumentation.jdbc-resultset is disabled. Skipping.
+2025-10-07T10:44:42,463+0530 [28264 1] com.newrelic.agent.RPMServiceManagerImpl INFO: Configured to connect to New Relic at collector.newrelic.com:443
+2025-10-07T10:44:42,961+0530 [28264 1] com.newrelic INFO: Setting audit_mode to false
+2025-10-07T10:44:43,188+0530 [28264 62] com.newrelic WARN: Failed to validate Azure App Services value
+2025-10-07T10:44:43,287+0530 [28264 1] com.newrelic.agent.config.ConfigServiceImpl INFO: Configuration file is D:\github\cgwebproject\newrelic\newrelic.yml
+2025-10-07T10:44:43,293+0530 [28264 1] com.newrelic INFO: New Relic Agent v8.22.0 has started
+2025-10-07T10:44:43,293+0530 [28264 1] com.newrelic INFO: Agent class loader: com.newrelic.bootstrap.BootstrapAgent$JVMAgentClassLoader@3b22cdd0
+2025-10-07T10:44:43,293+0530 [28264 1] com.newrelic INFO: Premain startup complete in 3,734ms
+2025-10-07T10:44:43,299+0530 [28264 1] com.newrelic INFO: New Relic Security is completely disabled by one of the user provided config `security.enabled`, `security.agent.enabled` or `high_security`. Not loading security capabilities.
+2025-10-07T10:44:49,820+0530 [28264 1] com.newrelic INFO: Server Info: Apache Tomcat/10.1.46
+2025-10-07T10:45:03,339+0530 [28264 68] com.newrelic INFO: Host name is LAPTOP-IOMOJL85, display host LAPTOP-IOMOJL85 for application MyMultiModuleApp
+2025-10-07T10:45:03,341+0530 [28264 68] com.newrelic INFO: New Relic JFR Monitor is disabled: JFR config has not been enabled in the Java agent.
+2025-10-07T10:45:05,352+0530 [28264 68] com.newrelic INFO: Collector redirection to collector.newrelic.com:443
+2025-10-07T10:45:06,865+0530 [28264 68] com.newrelic INFO: Max payload size is 1,000,000 bytes
+2025-10-07T10:45:06,865+0530 [28264 68] com.newrelic INFO: Agent run id: BTtMlp3yBkkRAGoBDFGMkzRo5KJMAAIBAAAnIQEAAG5oAgRT1lBcAwAGOC4yMi4wAA9MQVBUT1AtSU9NT0pMODUAEE15TXVsdGlNb2R1bGVBcHA
+2025-10-07T10:45:06,865+0530 [28264 68] com.newrelic INFO: Agent 28264@LAPTOP-IOMOJL85/MyMultiModuleApp connected to collector.newrelic.com:443
+2025-10-07T10:45:06,865+0530 [28264 68] com.newrelic INFO: Reporting to: https://rpm.newrelic.com/accounts/6947084/applications/1406554204
+2025-10-07T10:45:06,866+0530 [28264 68] com.newrelic INFO: Using default collector host: collector.newrelic.com
+2025-10-07T10:45:06,866+0530 [28264 68] com.newrelic INFO: Using default metric ingest URI: https://metric-api.newrelic.com/metric/v1
+2025-10-07T10:45:06,866+0530 [28264 68] com.newrelic INFO: Using default event ingest URI: https://insights-collector.newrelic.com/v1/accounts/events
+2025-10-07T10:45:06,867+0530 [28264 68] com.newrelic INFO: Using default collector host: collector.newrelic.com
+2025-10-07T10:45:06,867+0530 [28264 68] com.newrelic INFO: Using default metric ingest URI: https://metric-api.newrelic.com/metric/v1
+2025-10-07T10:45:06,867+0530 [28264 68] com.newrelic INFO: Using default event ingest URI: https://insights-collector.newrelic.com/v1/accounts/events
+2025-10-07T10:45:08,395+0530 [28264 68] com.newrelic INFO: Real user monitoring is enabled for application MyMultiModuleApp. Auto instrumentation is enabled.
+2025-10-07T10:45:08,396+0530 [28264 68] com.newrelic INFO: New Relic JFR Monitor is disabled: JFR config has not been enabled in the Java agent.
+2025-10-07T12:40:38,667+0530 [28264 105] com.newrelic ERROR: A socket exception was encountered while sending data to New Relic (java.net.SocketException: Connection reset). Please check your network / proxy settings.
+2025-10-07T12:52:42,339+0530 [28264 38] com.newrelic.agent.core.CoreServiceImpl INFO: JVM is shutting down
+2025-10-27T20:08:30,073+0530 [36076 1] com.newrelic INFO: Writing to New Relic log file: D:\github\cgwebproject\newrelic\logs\newrelic_agent.log
+2025-10-27T20:08:30,088+0530 [36076 1] com.newrelic INFO: JRE vendor Oracle Corporation version 21.0.8
+2025-10-27T20:08:30,088+0530 [36076 1] com.newrelic INFO: JVM vendor Oracle Corporation Java HotSpot(TM) 64-Bit Server VM version 21.0.8+12-LTS-250
+2025-10-27T20:08:30,088+0530 [36076 1] com.newrelic INFO: OS Windows 11 version 10.0 arch amd64
+2025-10-27T20:08:30,088+0530 [36076 1] com.newrelic INFO: Agent Host: LAPTOP-IOMOJL85 IP: 192.168.1.3
+2025-10-27T20:08:30,088+0530 [36076 1] com.newrelic INFO: New Relic Agent v8.22.0 is initializing...
+2025-10-27T20:08:31,369+0530 [36076 49] com.newrelic INFO: Instrumentation com.newrelic.instrumentation.jdbc-resultset is disabled. Skipping.
+2025-10-27T20:08:34,863+0530 [36076 1] com.newrelic.agent.RPMServiceManagerImpl INFO: Configured to connect to New Relic at collector.newrelic.com:443
+2025-10-27T20:08:35,588+0530 [36076 1] com.newrelic INFO: Setting audit_mode to false
+2025-10-27T20:08:35,824+0530 [36076 1] com.newrelic.agent.config.ConfigServiceImpl INFO: Configuration file is D:\github\cgwebproject\newrelic\newrelic.yml
+2025-10-27T20:08:35,832+0530 [36076 1] com.newrelic INFO: New Relic Agent v8.22.0 has started
+2025-10-27T20:08:35,832+0530 [36076 1] com.newrelic INFO: Agent class loader: com.newrelic.bootstrap.BootstrapAgent$JVMAgentClassLoader@3b22cdd0
+2025-10-27T20:08:35,832+0530 [36076 1] com.newrelic INFO: Premain startup complete in 7,407ms
+2025-10-27T20:08:35,834+0530 [36076 1] com.newrelic INFO: New Relic Security is completely disabled by one of the user provided config `security.enabled`, `security.agent.enabled` or `high_security`. Not loading security capabilities.
+2025-10-27T20:08:35,934+0530 [36076 62] com.newrelic WARN: Failed to validate Azure App Services value
+2025-10-27T20:08:45,303+0530 [36076 1] com.newrelic INFO: Server Info: Apache Tomcat/10.1.46
+2025-10-27T20:09:00,879+0530 [36076 68] com.newrelic INFO: Host name is LAPTOP-IOMOJL85, display host LAPTOP-IOMOJL85 for application MyMultiModuleApp
+2025-10-27T20:09:00,879+0530 [36076 68] com.newrelic INFO: New Relic JFR Monitor is disabled: JFR config has not been enabled in the Java agent.
+2025-10-27T20:09:03,124+0530 [36076 68] com.newrelic INFO: Collector redirection to collector.newrelic.com:443
+2025-10-27T20:09:05,117+0530 [36076 68] com.newrelic INFO: Max payload size is 1,000,000 bytes
+2025-10-27T20:09:05,117+0530 [36076 68] com.newrelic INFO: Agent run id: BWiFlz7kTPn3AGoBDFGMkzRo_4R8AAIBAAAnIQEAAIzsAgRT1lBcAwAGOC4yMi4wAA9MQVBUT1AtSU9NT0pMODUAEE15TXVsdGlNb2R1bGVBcHA
+2025-10-27T20:09:05,117+0530 [36076 68] com.newrelic INFO: Agent 36076@LAPTOP-IOMOJL85/MyMultiModuleApp connected to collector.newrelic.com:443
+2025-10-27T20:09:05,117+0530 [36076 68] com.newrelic INFO: Reporting to: https://rpm.newrelic.com/accounts/6947084/applications/1406554204
+2025-10-27T20:09:05,117+0530 [36076 68] com.newrelic INFO: Using default collector host: collector.newrelic.com
+2025-10-27T20:09:05,117+0530 [36076 68] com.newrelic INFO: Using default metric ingest URI: https://metric-api.newrelic.com/metric/v1
+2025-10-27T20:09:05,117+0530 [36076 68] com.newrelic INFO: Using default event ingest URI: https://insights-collector.newrelic.com/v1/accounts/events
+2025-10-27T20:09:05,117+0530 [36076 68] com.newrelic INFO: Using default collector host: collector.newrelic.com
+2025-10-27T20:09:05,117+0530 [36076 68] com.newrelic INFO: Using default metric ingest URI: https://metric-api.newrelic.com/metric/v1
+2025-10-27T20:09:05,117+0530 [36076 68] com.newrelic INFO: Using default event ingest URI: https://insights-collector.newrelic.com/v1/accounts/events
+2025-10-27T20:09:05,676+0530 [36076 68] com.newrelic INFO: Real user monitoring is enabled for application MyMultiModuleApp. Auto instrumentation is enabled.
+2025-10-27T20:09:05,678+0530 [36076 68] com.newrelic INFO: New Relic JFR Monitor is disabled: JFR config has not been enabled in the Java agent.
+2025-10-27T21:52:48,574+0530 [36076 109] com.newrelic ERROR: A socket exception was encountered while sending data to New Relic (java.net.SocketException: Connection reset). Please check your network / proxy settings.
+2025-10-27T22:29:21,570+0530 [36076 38] com.newrelic.agent.core.CoreServiceImpl INFO: JVM is shutting down

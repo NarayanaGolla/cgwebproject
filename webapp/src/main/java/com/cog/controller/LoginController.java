@@ -21,16 +21,16 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
-public class HelloController {
+public class LoginController {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(HelloController.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
 
   private final UserService userService;
-  private AuthenticationManager authenticationManager;
-  private HttpSession session;
-  private JwtService jwtService;
+  private final AuthenticationManager authenticationManager;
+  private final HttpSession session;
+  private final JwtService jwtService;
 
-  public HelloController(
+  public LoginController(
       UserService userService,
       AuthenticationManager authenticationManager,
       HttpSession session,
@@ -40,11 +40,6 @@ public class HelloController {
     this.session = session;
     this.jwtService = jwtService;
   }
-
-  //  @GetMapping("/")
-  //  public String home() {
-  //    return "Hello, World!";
-  //  }
 
   @GetMapping("/greet")
   public String greet(@RequestParam String name) {
@@ -64,7 +59,7 @@ public class HelloController {
 
   @PostMapping(value = "/login", consumes = "application/json")
   public ResponseEntity<JwtResponseDTO> userRegister(
-      @Validated @RequestBody AuthRequestDTO authRequestDTO) {
+      @Validated @RequestBody AuthRequestDTO authRequestDTO) throws Exception {
     Authentication authentication =
         authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(

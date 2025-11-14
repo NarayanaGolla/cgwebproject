@@ -7,12 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
-  @GetMapping("/index") // This will handle all the request comming from the home page "/"
+  @GetMapping("/index")
   public String index() {
-
-    return "home"; // This is the view name, which refers to the Home.html view in
-    // /src/main/resources/templates
-    // return "Home Page - Public";
-
+    return "home";
   }
 }

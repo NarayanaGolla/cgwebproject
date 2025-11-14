@@ -1,10 +1,10 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name = "trainingSuite">
-    <test name = "trainingtest" >
+<suite name = "LoginSuite">
+    <test name = "Logintest" >
         <classes>
-            <class name="com.webapp.wiremock.B_StartServerFromCode"/>
+            <class name="com.webapp.restassured.UserRegisterTest"/>
         </classes>
     </test>
 

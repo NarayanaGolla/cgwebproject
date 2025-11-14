@@ -26,3 +26,8 @@ curl -X POST "http://localhost:8080/kafka/send" \
 
 
 http://localhost:8080/kafka/publish?message=Hello
+
+TOKEN=$(curl -s -X POST http://localhost:9090/login -H "Content-Type: application/json" -d '{"username":"sankar","password":"123456"}' | jq -r ".accessToken")
+curl -H "Authorization: Bearer $TOKEN" http://localhost:9090/protected
+
+curl -s -X POST http://localhost:9090/login -H "Content-Type: application/json" -d "{\"username\":\"sankar\",\"password\":\"123456\"}" | jq -r ".accessToken"

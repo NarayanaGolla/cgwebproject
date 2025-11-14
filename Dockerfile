@@ -1,5 +1,5 @@
-# Use a base image with Java 17
-FROM openjdk:17-jdk-alpine
+# Use OpenJDK 21 base image
+FROM eclipse-temurin:21-jdk
 
 # Add metadata
 LABEL maintainer="yourname@example.com"
