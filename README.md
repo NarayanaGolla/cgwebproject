@@ -41,5 +41,10 @@ springboot-cucumber-restassured/
 
 ./gradlew clean test --tests "com.webapp.runner.TestRunner"
 
+```
+
+## Run SpringBoot Application
+```bash
+./gradlew build
 
 ```
