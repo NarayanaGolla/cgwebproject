@@ -1,5 +1,5 @@
-FOLDER="/d/github/cgwebprojectintegration/newrelic"
-APP_JAR="/d/github/cgwebprojectintegration/webapp/build/libs/webapp-1.0.0.jar"
+FOLDER="/d/github/cgwebproject/newrelic"
+APP_JAR="/d/github/cgwebproject/webapp/build/libs/webapp-1.0.0.jar"
 
 
 if [ -d "$FOLDER" ]; then
@@ -29,4 +29,5 @@ echo "✅ Starting application with New Relic agent..."
 
 java -javaagent:$FOLDER/newrelic.jar \
      -Dnewrelic.config.file=$FOLDER/newrelic.yml \
+     -Dnewrelic.config.distributed_tracing.enabled=true \
      -jar $APP_JAR

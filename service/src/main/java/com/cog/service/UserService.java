@@ -5,6 +5,7 @@ import com.cog.dom.Login;
 import com.cog.dom.User;
 import com.cog.repository.LoginRepository;
 import com.cog.repository.UserRepository;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,13 @@ public class UserService {
   }
 
   public User registerUser(RegisterBean registerBean) {
+
+    // Check if user already exists by username (or email)
+    Optional<User> existingUser = userRepository.findByUsername(registerBean.getUsername());
+
+    // Delete the user if already exists
+    existingUser.ifPresent(userRepository::delete);
+
     User register = new User();
     register.setUsername(registerBean.getUsername());
     register.setPassword(passwordEncoder.encode(registerBean.getPassword()));

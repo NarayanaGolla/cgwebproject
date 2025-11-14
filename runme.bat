@@ -1,0 +1,1 @@
+./gradlew :webapp:runSimple --info --stacktrace &
