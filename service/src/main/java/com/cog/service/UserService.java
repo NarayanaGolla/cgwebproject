@@ -2,10 +2,13 @@ package com.cog.service;
 
 import com.cog.bean.RegisterBean;
 import com.cog.dom.Login;
+import com.cog.dom.Role;
 import com.cog.dom.User;
 import com.cog.repository.LoginRepository;
 import com.cog.repository.UserRepository;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -44,6 +47,11 @@ public class UserService {
     User register = new User();
     register.setUsername(registerBean.getUsername());
     register.setPassword(passwordEncoder.encode(registerBean.getPassword()));
+//    Set<Role> roles =
+//        registerBean.getRoles().stream()
+//            .map(roleName -> new Role(null, roleName)) // create Role object
+//            .collect(Collectors.toSet());
+//    register.setRoles(roles);
     userRepository.save(register);
 
     return register;

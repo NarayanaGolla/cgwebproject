@@ -8,9 +8,22 @@ class Message{
         System.out.print(msg);
     }
 }
+
+interface Employee {
+    EmployeeDetails display();
+}
+
+class EmployeeDetails{
+    EmployeeDetails(){
+        System.out.println("EmployeeDetails");
+    }
+}
+
 public class ConstructorReference {
     public static void main(String[] args) {
         Messageable hello = Message::new;
         hello.getMessage("Hello");
+
+        Employee employee = EmployeeDetails::new;
     }
 }

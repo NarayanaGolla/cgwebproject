@@ -1,7 +1,7 @@
 # Spring Boot Cucumber RestAssured Project
 
 ## Overview
-This project is a basic Spring Boot application that leverages **Cucumber** and **Rest Assured** for API testing. It also generates test reports in multiple formats: **Pretty HTML**, **JSON**, and **Extent Reports**. The project is designed to be flexible and works with both **Maven** and **Gradle** build tools.
+This project is a basic [Spring Boot application](https://start.spring.io/) that leverages **Cucumber** and **Rest Assured** for API testing. It also generates test reports in multiple formats: **Pretty HTML**, **JSON**, and **Extent Reports**. The project is designed to be flexible and works with both **Maven** and **Gradle** build tools.
 
 The integration allows seamless execution of tests with scenarios tagged by Azure DevOps (ADO) test case IDs. After execution, the results can be posted back to ADO for tracking.
 
@@ -48,3 +48,14 @@ springboot-cucumber-restassured/
 ./gradlew build
 
 ```
+
+## Docker
+Run the command: `docker-compose up`
+```bash
+docker build -t myapp:latest .
+docker run -p 8080:9090 myapp:latest
+
+docker-compose up --build
+
+```
+> Note: This is spring boot application

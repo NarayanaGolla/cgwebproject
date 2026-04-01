@@ -11,8 +11,21 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 /**
- * in beforeSuite in beforeTest in beforeClass in beforeMethod in test case 1 in afterMethod in
- * beforeMethod in test case 2 in afterMethod in afterClass in afterTest in afterSuite
+ * in beforeSuite
+ * in beforeTest
+ * in beforeClass
+ *
+ * in beforeMethod
+ * in test case 1
+ * in afterMethod
+ *
+ * in beforeMethod
+ * in test case 2
+ * in afterMethod
+ *
+ * in afterClass
+ * in afterTest
+ * in afterSuite
  */
 public class TestngAnnotation {
   // test case 1

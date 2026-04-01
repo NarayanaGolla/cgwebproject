@@ -16,6 +16,10 @@ COPY ${JAR_FILE} app.jar
 # Optional: copy logging properties if you have it
 # COPY logging.properties /app/logging.properties
 
+
+# If Gradle:
+#   RUN ./gradlew clean build -x test
+
 # Expose ports (Spring Boot default is 8080)
 EXPOSE 8080
 

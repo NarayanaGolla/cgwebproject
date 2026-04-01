@@ -1,0 +1,17 @@
+<payloads>
+
+    <payload key="studentCreate">
+        <student>
+            <id>1</id>
+            <name>John</name>
+        </student>
+    </payload>
+
+    <payload key="employeeCreate">
+        <employee>
+            <id>101</id>
+            <name>Alice</name>
+        </employee>
+    </payload>
+
+</payloads>

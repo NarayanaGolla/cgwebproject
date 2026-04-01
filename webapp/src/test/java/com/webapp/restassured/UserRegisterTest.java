@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import com.cog.webapp.SpringBootLauncer;
 import com.webapp.utils.ResourcesUtils;
 import io.restassured.RestAssured;
+import io.restassured.response.Response;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,7 +14,6 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import io.restassured.response.Response;
 
 @SpringBootTest(
     classes = SpringBootLauncer.class,
@@ -28,7 +28,7 @@ public class UserRegisterTest extends AbstractTestNGSpringContextTests {
     RestAssured.port = 9090;
   }
 
-  @Test(enabled = false)
+  @Test(enabled = true,priority = 0)
   public void user_register_test() throws IOException, URISyntaxException {
 
     String jsonBody = ResourcesUtils.loadResourceAsString("register_payload.json");
@@ -44,32 +44,29 @@ public class UserRegisterTest extends AbstractTestNGSpringContextTests {
         .all();
   }
 
-  @Test(enabled = false)
+  @Test(enabled = true,priority = 1)
   public void user_login_test() throws IOException, URISyntaxException {
 
     String jsonBody = ResourcesUtils.loadResourceAsString("register_payload.json");
 
     given()
-            .contentType("application/json")
-            .body(jsonBody)
-            .when()
-            .post("/login")
-            .then()
-            .statusCode(201)
-            .log()
-            .all();
+        .contentType("application/json")
+        .body(jsonBody)
+        .when()
+        .post("/login")
+        .then()
+        .statusCode(200)
+        .log()
+        .all();
   }
 
-  @Test
+  @Test(priority = 2)
   public void user_login_test_validation() throws IOException {
 
     String jsonBody = ResourcesUtils.loadResourceAsString("register_payload.json");
 
-    Response response =  given()
-            .contentType("application/json")
-            .body(jsonBody)
-            .when()
-            .post("/login");
+    Response response =
+        given().contentType("application/json").body(jsonBody).when().post("/login");
 
     assertEquals(201, response.getStatusCode());
   }

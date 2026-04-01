@@ -57,7 +57,7 @@ public class SpringBootLauncerTest {
             post("/login")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(authRequest)))
-        .andExpect(status().isCreated())
+        .andExpect(status().isOk())
         .andExpect(jsonPath("$.accessToken").value("fake-jwt-token"));
   }
 

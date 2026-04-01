@@ -5,11 +5,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Service;
 
 @Data // generates getters, setters
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Service
 public class JwtResponseDTO {
 
   // Name of the ingredient (should not be blank)
