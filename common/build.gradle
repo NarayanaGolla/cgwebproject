@@ -1,27 +1,27 @@
 plugins {
-    id 'java-library'
+	id 'java-library'
 }
 dependencies {
-    api('org.springframework:spring-context')
+	api('org.springframework:spring-context')
 
-    // MySQL Driver
-    runtimeOnly 'com.mysql:mysql-connector-j'
+	// MySQL Driver
+	runtimeOnly 'com.mysql:mysql-connector-j'
 
-    // Oracle Driver (Use correct version based on your Oracle DB)
-    runtimeOnly 'com.oracle.database.jdbc:ojdbc8:19.3.0.0'
+	// Oracle Driver (Use correct version based on your Oracle DB)
+	runtimeOnly 'com.oracle.database.jdbc:ojdbc8:19.3.0.0'
 }
 
 tasks.withType(Test).configureEach {
-    useJUnitPlatform()
-    testLogging {
-        events("passed", "skipped", "failed")
-    }
+	useJUnitPlatform()
+	testLogging {
+		events("passed", "skipped", "failed")
+	}
 
-    def suiteName = hasProperty("suitename") ? property("suitename") : "testng.xml"
-    def suiteFile = file("src/test/resources/${suiteName}")
+	def suiteName = hasProperty("suitename") ? property("suitename") : "testng.xml"
+	def suiteFile = file("src/test/resources/${suiteName}")
 
-    useTestNG {
-       // suites suiteFile
-        suites 'src/test/resources/testng.xml'
-    }
+	useTestNG {
+	// suites suiteFile
+		suites 'src/test/resources/testng.xml'
+	}
 }

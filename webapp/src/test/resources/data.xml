@@ -1,0 +1,18 @@
+<data>
+
+    <student>
+        <id>1</id>
+        <name>John</name>
+    </student>
+
+    <employee>
+        <id>101</id>
+        <name>Alice</name>
+    </employee>
+
+    <test>
+        <type>integration</type>
+        <status>pass</status>
+    </test>
+
+</data>

@@ -15,5 +15,12 @@ management:
     health:
       show-details: always    # optional - shows extra info like DB, disk, etc.
 
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 50
+        order_inserts: true
+
 server:
   port: 9090

@@ -1,108 +1,109 @@
 plugins {
-    id 'org.springframework.boot' version '3.5.6'
-    id 'io.spring.dependency-management' version '1.1.7'
+	id 'org.springframework.boot' version '3.5.6'
+	id 'io.spring.dependency-management' version '1.1.7'
 }
 
 dependencies {
 
-    implementation project(':common')
-    implementation project(':service')
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
-    implementation 'org.springframework.boot:spring-boot-starter-test'
-    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    implementation 'mysql:mysql-connector-java:8.0.33'
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	implementation project(':common')
+	implementation project(':service')
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	implementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'mysql:mysql-connector-java:8.0.33'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
 
-    // AssertJ
-    testImplementation "org.assertj:assertj-core:3.24.2"
+	// AssertJ
+	testImplementation "org.assertj:assertj-core:3.24.2"
 
-    // TestNG
-    testImplementation "org.testng:testng:7.11.0"
+	// TestNG
+	testImplementation "org.testng:testng:7.11.0"
 
-    testImplementation("io.rest-assured:rest-assured:5.4.0")
+	testImplementation("io.rest-assured:rest-assured:5.4.0")
 
-    //selenium
-    implementation("org.seleniumhq.selenium:selenium-java:4.35.0") {
-        exclude group: "org.apache.httpcomponents.core5", module: "httpcore5"
-        exclude group: "org.apache.httpcomponents.core5", module: "httpcore5-h2"
-        // also if needed exclude client5 etc.
-    }
-     implementation "io.github.bonigarcia:webdrivermanager:6.3.2"
+	//selenium
+	implementation("org.seleniumhq.selenium:selenium-java:4.35.0") {
+		exclude group: "org.apache.httpcomponents.core5", module: "httpcore5"
+		exclude group: "org.apache.httpcomponents.core5", module: "httpcore5-h2"
+		// also if needed exclude client5 etc.
+	}
+	implementation "io.github.bonigarcia:webdrivermanager:6.3.2"
 
-    // HttpClient 5.3.x is required for TlsSocketStrategy
-    implementation "org.apache.httpcomponents.client5:httpclient5:5.4.4"
-    implementation "org.apache.httpcomponents.core5:httpcore5:5.3.6"    // or other latest 5.3.x
+	// HttpClient 5.3.x is required for TlsSocketStrategy
+	implementation "org.apache.httpcomponents.client5:httpclient5:5.4.4"
+	implementation "org.apache.httpcomponents.core5:httpcore5:5.3.6"    // or other latest 5.3.x
 
 
-    // JUnit 5 + 4
-     testImplementation "org.junit.jupiter:junit-jupiter:5.10.2"
-   // testImplementation "junit:junit:4.13.2"
+	// JUnit 5 + 4
+	testImplementation "org.junit.jupiter:junit-jupiter:5.10.2"
+// testImplementation "junit:junit:4.13.2"
 
-    // Mockito
-    testImplementation "org.mockito:mockito-core:5.11.0"
+	// Mockito
+	testImplementation "org.mockito:mockito-core:5.11.0"
 
-    //Cucumber
-    testImplementation("io.cucumber:cucumber-java:7.27.2")
-    testImplementation("io.cucumber:cucumber-junit:7.27.2")
-    testImplementation 'io.cucumber:cucumber-spring:7.27.2'
+	//Cucumber
+	testImplementation("io.cucumber:cucumber-java:7.27.2")
+	testImplementation("io.cucumber:cucumber-junit:7.27.2")
+	testImplementation 'io.cucumber:cucumber-spring:7.27.2'
 
-    testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-stub-runner:4.1.2'
-    testImplementation 'org.springframework.cloud:spring-cloud-contract-wiremock:4.1.2'
+	testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-stub-runner:4.1.2'
+	testImplementation 'org.springframework.cloud:spring-cloud-contract-wiremock:4.1.2'
 
-  //  testImplementation "io.cucumber:cucumber-java:7.27.2"
-    //testImplementation "io.cucumber:cucumber-junit-platform-engine:7.27.2"
-    //testImplementation "org.junit.jupiter:junit-jupiter:5.10.2"
+//  testImplementation "io.cucumber:cucumber-java:7.27.2"
+	//testImplementation "io.cucumber:cucumber-junit-platform-engine:7.27.2"
+	//testImplementation "org.junit.jupiter:junit-jupiter:5.10.2"
 
-   implementation("org.wiremock.integrations:wiremock-spring-boot:3.10.6")
+implementation("org.wiremock.integrations:wiremock-spring-boot:3.10.6")
 }
 
 
 
 tasks.register('runSimple', JavaExec) {
-    group = "application"
-    description = "Run the Spring Boot application in a simple way"
+	group = "application"
+	description = "Run the Spring Boot application in a simple way"
 
-    classpath = sourceSets.main.runtimeClasspath
-    mainClass = "com.cog.webapp.SpringBootLauncer"  // replace with your @SpringBootApplication class
+	classpath = sourceSets.main.runtimeClasspath
+	mainClass = "com.cog.webapp.SpringBootLauncer"  // replace with your @SpringBootApplication class
 
-    // Pass arguments if needed
-    // args = ["--spring.profiles.active=dev"]
+	// Pass arguments if needed
+	// args = ["--spring.profiles.active=dev"]
 }
 
 bootRun {
-    jvmArgs = [
-            "-javaagent:${project.rootDir}/newrelic/newrelic.jar"
-    ]
+	jvmArgs = [
+			"-javaagent:${project.rootDir}/newrelic/newrelic.jar"
+	]
 }
 
 // -----------------------------
 // JUnit 4 Task
 // -----------------------------
 tasks.register('junit4Test', Test) {
-    useJUnit() // ✅ JUnit 4 discovery
-    testClassesDirs = sourceSets.test.output.classesDirs
-    classpath = sourceSets.test.runtimeClasspath
-    testLogging {
-        events "passed", "skipped", "failed"
-    }
+	useJUnit() // ✅ JUnit 4 discovery
+	testClassesDirs = sourceSets.test.output.classesDirs
+	classpath = sourceSets.test.runtimeClasspath
+	testLogging {
+		events "passed", "skipped", "failed"
+	}
 }
 
 // -----------------------------
 // TestNG Task
 // -----------------------------
 tasks.register('testngTest', Test) {
-    useTestNG {
-        // ✅ pick up suite file dynamically if needed
-        def suiteName = project.hasProperty("suitename") ? property("suitename") : "testng.xml"
-        suites "src/test/resources/${suiteName}"
-    }
-    testClassesDirs = sourceSets.test.output.classesDirs
-    classpath = sourceSets.test.runtimeClasspath
-    testLogging {
-        events "passed", "skipped", "failed"
-    }
+	useTestNG {
+		// ✅ pick up suite file dynamically if needed
+		def suiteName = project.hasProperty("suitename") ? property("suitename") : "testng.xml"
+		suites "src/test/resources/${suiteName}"
+	}
+	testClassesDirs = sourceSets.test.output.classesDirs
+	classpath = sourceSets.test.runtimeClasspath
+	testLogging {
+		events "passed", "skipped", "failed"
+	}
 }
 
 // Run both when you call `gradlew test`
@@ -113,12 +114,12 @@ tasks.register('testngTest', Test) {
 //}
 
 tasks.withType(Test).configureEach {
-   // useJUnit()  // ✅ Tells Gradle to use JUnit 4 discovery
+// useJUnit()  // ✅ Tells Gradle to use JUnit 4 discovery
 //    include '**/*Test.class'  // ✅ Ensures your RunCucumberTest is matched
-    testLogging {
-        events "passed", "skipped", "failed"
-    }
-  useJUnitPlatform()
+	testLogging {
+		events "passed", "skipped", "failed"
+	}
+useJUnitPlatform()
 //    def suiteName = hasProperty("suitename") ? property("suitename") : "testng.xml"
 //    def suiteFile = file("src/test/resources/${suiteName}")
 //

@@ -68,11 +68,39 @@ subprojects {
         implementation 'org.springframework.boot:spring-boot-starter-actuator'
     }
 
+    // groovy
     spotless {
         java {
+
+            // which files to format
+            target 'src/**/*.java'
+
+            // use google-java-format (no version uses plugin default)
             googleJavaFormat()
+
+            // keep import ordering and cleanup
             importOrder()
             removeUnusedImports()
+            trimTrailingWhitespace()
+            endWithNewline()
+
+            // skip generated sources
+            targetExclude 'src/**/generated/**', 'build/**'
+
+        }
+
+
+        // format Gradle files
+        format 'groovyGradle', {
+            target '*.gradle', '**/*.gradle'
+            trimTrailingWhitespace()
+            endWithNewline()
+            indentWithTabs() // or spaces as your team prefers
+        }
+
+        // format miscellaneous files (yaml, md)
+        format 'misc', {
+            target '**/*.yml', '**/*.yaml', '**/*.md'
             trimTrailingWhitespace()
             endWithNewline()
         }
